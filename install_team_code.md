@@ -56,6 +56,7 @@ sudo cp RBDLConfig.cmake /usr/local/lib/cmake/rbdl
 安装ros_ethercat:
 首先将ros_ethercat包克隆到/catkin_ws/src文件夹。
 然后打开Ubuntu系统设置，在“软件和更新”中选择“其他软件”添加卷如图所示
+
 ![](assets/markdown-img-paste-20191226211039827.png)
 然后运行
 ```
