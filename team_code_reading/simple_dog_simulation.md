@@ -1,6 +1,6 @@
 #### 1
 **********
-fake_pose_pub.cpp/h 定义类FakePose，完成gazebo关节的读取，并将其发布出来。
+fake_pose_pub.cpp/h 定义类FakePose，完成gazebo关节的读取，并将其发布出来。   
 节点名：/pose_pub_node
 订阅了gazebo模型状态、关节状态、足端传感器信息。发布robot_state_。
 #### 2
