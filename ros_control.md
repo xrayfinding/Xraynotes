@@ -15,3 +15,48 @@
 
 * 数据流图
 ![](assets/markdown-img-paste-20200108215628948.png)
+****
+####创建一个控制器
+首先，从controller_interface继承Controller类。并从中继承init() starting() update() stopping()四个函数。
+重载４个函数．
+在源代码末尾加上
+```
+PLUGINLIB_DECLARE_CLASS(my_controller_pkg,MyControllerPlugin,
+                         my_controller_ns::MyControllerClass,
+                         pr2_controller_interface::Controller)
+```
+第一个参数：包名称　　　
+第二个参数：控制器插件名称（在相应的controller_plugins.xml中定义）
+第三个参数：所写的Controller类名称
+第四个参数：基类名称　　　
+
+controller_plugins.xml文件格式：
+```
+<library path="lib/libmy_controller_lib">
+  <class>
+    name="MycontrollerPlugin"
+    type="xray_ns::XrayController"
+    base_class_type=""pr2_controller_interface::Controller"
+  </class>
+</library>
+```
+写一个yaml文件,格式大致如下所示。
+```
+my_controller_name:
+  type: my_controller/MycontrollerPlugin
+  joint_name: r_shoulder_pan_joint
+  pid_parameters:
+    p:10.0
+    i:0.0
+    d:0.0
+    i_clamp:0.0
+
+```
+写一个launch文件：
+```
+<launch>
+   <rosparam file="$(find my_controller_pkg)/my_controller.yaml" command="load" />
+
+   <node pkg="pr2_controller_manager" type="spawner" args="my_controller_name" name="my_controller_spawner" />
+</launch>
+```
