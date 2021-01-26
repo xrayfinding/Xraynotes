@@ -32,7 +32,7 @@ sudo make install
 cd OOQP
 MA27LIB=/usr/local/lib/libma27.a
 export MA27LIB
-./configure CXXFLAGS=”-fPIC
+./configure CXXFLAGS="-fPIC"
 sudo make install
 ```
 ### 5.
